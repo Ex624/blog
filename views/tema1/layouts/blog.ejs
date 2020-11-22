@@ -16,7 +16,10 @@
     <meta name="author" content="Pixelwars" />
     <meta name="theme-color" content="#1755cf" />
 
-    <title>ikonik</title>
+    <title>
+      <%= typeof s.currentInfo != "undefined" ? s.currentInfo.title : "" %> -
+      <%= s.siteInfo.data.headerPrefix %>
+    </title>
 
     <!-- FAV and TOUCH ICONS -->
     <link rel="shortcut icon" href="/tema1/images/ico/favicon.ico" />
@@ -24,7 +27,12 @@
       rel="apple-touch-icon"
       href="/tema1/images/ico/apple-touch-icon.png"
     />
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css"
+      integrity="sha512-O03ntXoVqaGUTAeAmvQ2YSzkCvclZEcPQu1eqloPaHfJ5RuNGiS4l+3duaidD801P50J28EHyonCV06CUlTSag=="
+      crossorigin="anonymous"
+    />
     <!-- FONTS -->
     <link rel="stylesheet" href="/tema1/css/fonts/jost/jost.css" />
     <link
@@ -55,6 +63,7 @@
 
     <!-- INITIAL SCRIPTS -->
     <script src="/tema1/js/jquery.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
   </head>
 
   <body>
@@ -72,6 +81,12 @@
     <script src="/tema1/js/jquery-validate.js"></script>
     <script src="/tema1/js/resize-sensor.js"></script>
     <script src="/tema1/js/jquery-sticky-sidebar.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"
+      integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA=="
+      crossorigin="anonymous"
+    ></script>
     <script src="/tema1/js/main.js"></script>
+    <script src="/tema1/js/blog.js"></script>
   </body>
 </html>

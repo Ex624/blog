@@ -15,21 +15,11 @@
 
   <!-- .home-menu -->
   <nav class="home-menu">
-    <a href="/about" data-slug="about">
-      <span class="item-name">Hakkımda</span>
+    <% s.allInfo.data.forEach((d)=> {%> <%if(d.order != 0 ){%>
+    <a href="<%= d.slug %>" data-slug="<%= d.slug.slice(1) %>">
+      <span class="item-name"><%= d.title %></span>
     </a>
-    <a href="/resume" data-slug="resume">
-      <span class="item-name">Özgeçmiş</span>
-    </a>
-    <a href="/portfolio" data-slug="portfolio" id="portfolio-link">
-      <span class="item-name">Portfolio</span>
-    </a>
-    <a href="/blog/latest" data-slug="blog">
-      <span class="item-name">Blog</span>
-    </a>
-    <a href="/contact" data-slug="contact">
-      <span class="item-name">İletişim</span>
-    </a>
+    <%}%> <%}) %>
   </nav>
   <!-- .home-menu -->
 
@@ -37,36 +27,46 @@
   <div class="home-heading">
     <!-- .home-logo -->
     <div class="home-logo">
-      <p class="home-job-title">Javascript Developer</p>
+      <p class="home-job-title"><%= creater.title %></p>
 
-      <p class="home-marquee">buraya sonra yazıcam birşeyler</p>
+      <p class="home-marquee"><%= creater.about %></p>
 
-      <i class="home-logo-left"><span>Javascript</span></i>
+      <i class="home-logo-left"
+        ><span><%= creater.title.split(" ")[0] %></span></i
+      >
       <i class="home-logo-center">
         <span class="home-icon">
           <img src="/tema1/images//home/icon.svg" alt="icon" />
         </span>
         <span class="home-text-container">
-          <span class="home-text-container-placeholder">Tolga Çağlayan</span>
+          <span class="home-text-container-placeholder"
+            ><%= creater.name %> <%= creater.lastName %></span
+          >
         </span>
-        <span class="home-text">Tolga Çağlayan</span>
+        <span class="home-text"
+          ><%= creater.name %> <%= creater.lastName %></span
+        >
       </i>
-      <i class="home-logo-right"><span>Developer</span></i>
+      <i class="home-logo-right"
+        ><span><%= creater.title.split(" ")[1] %></span></i
+      >
     </div>
     <!-- .home-logo -->
   </div>
   <!-- .home-heading -->
 
   <!-- .home-social -->
-  <p class="home-social">
-    <a class="social-link facebook" href="https://facebook.com/tolgaand"></a>
-    <a class="social-link instagram" href="https://instagram.com/tolgaand"></a>
-    <a class="social-link github" href="https://github.com/tolgaand"></a>
-  </p>
+  <p class="home-social"><%- include("../partials/headerSocial") %></p>
   <!-- .home-social -->
 
   <!-- .home-footer -->
-  <p class="home-footer">&copy; 2020 - Tüm Hâkları Saklıdır</p>
+  <p class="home-footer">
+    &copy;
+    <script>
+      document.write(new Date().getFullYear());
+    </script>
+    - <%= s.siteInfo.data.footer %>
+  </p>
   <!-- .home-footer -->
 
   <!-- FULL SCREEN TOGGLE -->

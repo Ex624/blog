@@ -18,6 +18,7 @@
   var userClickedAutoplayDialog = false;
   var homeLoaded = false;
   var autoplay = false;
+  const title = document.title;
 
   /* DOCUMENT LOAD */
   $(function () {
@@ -1189,8 +1190,10 @@
 
     $("html").addClass("is-ajax-page-active");
 
+    console.log(url);
     // only jquery get() returns remote page's <head> content
-    jQuery.get(url, function (data) {
+    jQuery.get(url == "/blog" ? "/blog/latest" : url, function (data) {
+      document.title = $(data).filter("title").text();
       // clear container content
       one_page_content.children(".content-wrap").empty();
 
@@ -1245,6 +1248,8 @@
 
   // CLOSE PAGE
   function closePage() {
+    document.title = title;
+
     $("html")
       .removeClass("is-ajax-page-active")
       .removeClass("is-ajax-page-loaded")

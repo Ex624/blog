@@ -13,6 +13,10 @@
     "express": "~4.16.1",
     "express-ejs-layouts": "^2.5.0",
     "http-errors": "~1.6.3",
-    "morgan": "~1.9.1"
+    "moment": "^2.29.1",
+    "mongoose": "^5.10.15",
+    "morgan": "~1.9.1",
+    "node-fetch": "^2.6.1",
+    "slugify": "^1.4.6"
   }
 }
