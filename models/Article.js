@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const moment = require("moment");
 
 const aSchema = new Schema({
   title: {
@@ -13,7 +12,6 @@ const aSchema = new Schema({
   },
   createdDate: {
     type: Date,
-    required: true,
     default: Date.now(),
   },
   category: {

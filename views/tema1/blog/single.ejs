@@ -61,7 +61,15 @@
                 <!-- .entry-content -->
                 <div class="entry-content">
                   <p><%- article.content %></p>
+
+                    <footer class="entry-meta tags">
+                      <% article.tags.forEach((e)=> {%>
+                      <a href="" rel="tag"><%= e %></a>
+                      <% })%>
+                  </footer>
+               
                 </div>
+                
                 <!-- .entry-content -->
 
                 <!-- .related-posts -->

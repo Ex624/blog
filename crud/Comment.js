@@ -74,6 +74,7 @@ module.exports.add = async ({
       ipAdress,
       email,
       website: url,
+      createdDate: Date.now(),
     });
 
     newComment.save().then(async (d) => {

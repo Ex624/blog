@@ -6,12 +6,12 @@ body {
   overflow-x: hidden !important;
 }
 
-body.show-spinner>main {
+body.show-spinner > main {
   overflow: hidden !important;
 }
 
 /* Hide everything under body tag */
-body.show-spinner>* {
+body.show-spinner > * {
   opacity: 0;
 }
 
@@ -44,4 +44,10 @@ body.show-spinner::after {
   }
 }
 
-
+.card .card-body {
+  padding: 1.75rem !important;
+}
+#smartWizardValidation .card-body > div {
+  min-height: auto !important;
+  height: auto !important;
+}

@@ -28,6 +28,8 @@ module.exports.getSingleTitlePage = async (req, res, next) => {
   const categories = await Category.all();
   let articles = res.locals.articles;
   const article = articles.find((e) => e.url == title);
+  if (!article) return res.send("bulunamadı");
+
   const articleIndex = articles.findIndex((e) => e.url == title);
 
   const previousPost = articles[articleIndex + 1];

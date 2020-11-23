@@ -1,1 +1,117 @@
-<h1>hello world</h1>
+<main style="opacity: 0" class="default-transition">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card mb-4">
+          <div id="smartWizardValidation" class="sw-main sw-theme-check">
+            <ul class="card-header nav nav-tabs step-anchor">
+              <li class="nav-item active">
+                <a href="#step-0" class="nav-link"
+                  >Başlık ayarları<br /><small>Genel ayarlar</small></a
+                >
+              </li>
+              <li class="nav-item">
+                <a href="#step-1" class="nav-link"
+                  >İçerik<br /><small>ıvır zıvır</small></a
+                >
+              </li>
+              <li class="nav-item">
+                <a href="#step-2" class="nav-link"
+                  >Önizleme<br /><small>hepsine okey de</small></a
+                >
+              </li>
+            </ul>
+
+            <div
+              class="card-body sw-container tab-content"
+              style="min-height: auto !important"
+            >
+              <div
+                id="step-0"
+                class="tab-pane step-content"
+                style="display: block"
+                style="min-height: auto !important"
+              >
+                <form
+                  id="form-step-0"
+                  class="tooltip-label-right"
+                  novalidate=""
+                >
+                  <div class="form-group has-top-label">
+                    <input class="form-control" name="title" required />
+                    <span>Başlık</span>
+                  </div>
+
+                  <div class="form-group has-top-label">
+                    <input class="form-control" name="shortContent" required />
+                    <span>Giriş yazısı</span>
+                  </div>
+
+                  <div class="form-group has-top-label">
+                    <input
+                      data-role="tagsinput"
+                      class="tags-input"
+                      type="text"
+                      name="tags"
+                      required
+                    />
+                    <span>Taglar</span>
+                  </div>
+
+                  <div class="form-group has-top-label">
+                    <select
+                      class="form-control select2-single"
+                      data-width="100%"
+                      name="category"
+                      required
+                    >
+                      <option></option>
+
+                      <optgroup label="Bütün kategoriler">
+                        <%categories.forEach((d)=> {%>
+                        <option value="<%= d._id %>"><%= d.name %></option>
+                        <% })%>
+                      </optgroup>
+                    </select>
+                    <span>Kategori</span>
+                  </div>
+                </form>
+              </div>
+              <div id="step-1" class="tab-pane step-content">
+                <form
+                  id="form-step-1"
+                  class="tooltip-label-right"
+                  novalidate=""
+                >
+                  <div id="editor" style="width: 100%">
+                    <div id="edit" style="margin-top: 30px"></div>
+                  </div>
+                </form>
+              </div>
+              <div id="step-2" class="tab-pane step-content">
+                <div id="preview"></div>
+              </div>
+            </div>
+
+            <div
+              class="btn-toolbar custom-toolbar text-center card-body pt-0 sw-container tab-content"
+              style="min-height: auto"
+            >
+              <button class="btn btn-secondary prev-btn disabled">Geri</button>
+              <button class="btn btn-secondary next-btn" type="submit">
+                İleri
+              </button>
+              <button
+                class="btn btn-secondary finish-btn"
+                style="display: none"
+                type="submit"
+              >
+                Yayınla
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

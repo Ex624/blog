@@ -1,5 +1,6 @@
 const Article = require("../models/Article");
-
+const slugify = require("slugify");
+const mongoose = require("mongoose");
 module.exports.getFull = () => {
   return new Promise((resolve, reject) => {
     Article.aggregate([
@@ -58,6 +59,36 @@ module.exports.getFull = () => {
     ]).then((d) => {
       if (d) resolve({ success: true, data: d });
       else resolve({ success: false });
+    });
+  });
+};
+
+module.exports.save = ({ title, shortContent, content, tags, category }) => {
+  return new Promise((resolve, reject) => {
+    const newSc = new Article({
+      title,
+      url: slugify(title, {
+        replacement: "-",
+        remove: undefined,
+        lower: true,
+        strict: false,
+        locale: "vi",
+      }),
+      category: mongoose.Types.ObjectId(category),
+      mainImage:
+        "https://nolurbak.com/wp-content/uploads/2020/11/archero.png.webp",
+      creater: mongoose.Types.ObjectId("5fb8fa8c26cdfc239c4276b9"),
+      content,
+      shortContent,
+      comments: [],
+      tags,
+      createdDate: Date.now(),
+    });
+
+    newSc.save().then((d) => {
+      console.log(d);
+      if (d) resolve({ success: true, message: "Başarıyla yayınlandı" });
+      else esolve({ success: false, message: "Bilinmeyen bir hata oluştu" });
     });
   });
 };
