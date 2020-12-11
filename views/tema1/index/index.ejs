@@ -80,6 +80,31 @@
     <div class="bottom-right"></div>
     <div class="bottom-right-horiz"></div>
   </div>
+  <% if(typeof user == 'undefined'){ %>
+  <div class="fast-login" style="position: fixed; top: 0px; right: 0px">
+    <button
+      style="
+        margin: 0px;
+        padding: 5px 10px;
+        border: none;
+        color: white;
+        text-transform: capitalize;
+      "
+      id="fast-login"
+    >
+      Login
+    </button>
+  </div>
+  <% }else{ %>
+  <div class="fast-login" style="position: fixed; top: 0px; right: 0px">
+    <a
+      href="/admin/logout"
+      style="font-size: 11px; font-weight: bold; color: white"
+    >
+      Çıkış yap
+    </a>
+  </div>
+  <% } %>
   <!-- FULL SCREEN TOGGLE -->
 
   <!-- REMOVE THIS MARKUP TO DISABLE BG AUDIO -->

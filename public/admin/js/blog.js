@@ -26,12 +26,17 @@ $(() => {
 
   $(".next-btn").click(() => {
     let form = $(`form#form-step-${panelID}`);
+    console.log(form.serializeArray());
+
     if (panelID == 0) {
       data = form.serializeArray().reduce(function (obj, item) {
         obj[item.name] = item.value;
         return obj;
       }, {});
       data.tags = data.tags.split(",");
+
+      if (!(data.title || data.shortContent || data.content || data.category))
+        return;
     } else if (panelID == 1) {
       data.content = $("#preview").html();
     }

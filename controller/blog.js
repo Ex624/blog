@@ -25,15 +25,16 @@ module.exports.getSingleTitlePage = async (req, res, next) => {
     strict: false,
     locale: "vi",
   });
+
   const categories = await Category.all();
-  let articles = res.locals.articles;
-  const article = articles.find((e) => e.url == title);
+  let published = res.locals.articles;
+  const article = published.find((e) => e.url == title);
   if (!article) return res.send("bulunamadı");
 
-  const articleIndex = articles.findIndex((e) => e.url == title);
+  const articleIndex = published.findIndex((e) => e.url == title);
 
-  const previousPost = articles[articleIndex + 1];
-  const nextPost = articles[articleIndex - 1];
+  const previousPost = published[articleIndex + 1];
+  const nextPost = published[articleIndex - 1];
 
   article.previous = null;
   article.next = null;
@@ -48,11 +49,12 @@ module.exports.getSingleTitlePage = async (req, res, next) => {
   if (nextPost != undefined)
     article.next = { title: nextPost.title, url: nextPost.url };
 
-  recentPosts = articles.filter((a, b) => {
+  recentPosts = published.filter((a, b) => {
     return b != articleIndex;
   });
+
   // console.log(article);
-  res.render("tema1/blog/single", {
+  res.render("tema1/blog/controller", {
     layout: "tema1/layouts/blog",
     article,
     categories: categories.data,

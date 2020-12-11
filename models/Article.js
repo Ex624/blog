@@ -42,6 +42,13 @@ const aSchema = new Schema({
     type: String,
     required: true,
   },
+  type: {
+    //0 -> blog, 1 -> günlük
+    type: Number,
+    required: true,
+    enum: [0, 1],
+    default: 0,
+  },
   creater: Schema.Types.ObjectId,
 });
 

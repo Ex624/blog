@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const moment = require("moment");
 
 const cSchema = new Schema({
   name: {
@@ -26,6 +25,11 @@ const cSchema = new Schema({
   },
   website: {
     type: String,
+  },
+  isRead: {
+    type: Boolean,
+    enum: [false, true],
+    default: false,
   },
 });
 

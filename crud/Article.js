@@ -48,6 +48,8 @@ module.exports.getFull = () => {
           mainImage: 1,
           content: 1,
           shortContent: 1,
+          type: 1,
+          published: 1,
           "category.name": 1,
           "category.url": 1,
           "creater.name": 1,
@@ -63,7 +65,15 @@ module.exports.getFull = () => {
   });
 };
 
-module.exports.save = ({ title, shortContent, content, tags, category }) => {
+module.exports.save = ({
+  title,
+  shortContent,
+  content,
+  tags,
+  category,
+  yayin,
+  gunluk,
+}) => {
   return new Promise((resolve, reject) => {
     const newSc = new Article({
       title,
@@ -82,6 +92,8 @@ module.exports.save = ({ title, shortContent, content, tags, category }) => {
       shortContent,
       comments: [],
       tags,
+      type: gunluk == "on" ? 1 : 0,
+      published: yayin == "on" ? true : false,
       createdDate: Date.now(),
     });
 

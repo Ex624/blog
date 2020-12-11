@@ -85,7 +85,7 @@
                   <!-- LATEST POSTS -->
                   <div class="latest-posts media-grid">
                     <!-- post -->
-                    <% articles.forEach((d)=> { %>
+                    <% published.forEach((d)=> { %>
                     <article class="media-cell">
                       <div class="media-box">
                         <img src="<%= d.mainImage %>" alt="post-image" />
@@ -325,7 +325,7 @@
             <h3 class="widget-title">Son Yazılar</h3>
             <div class="tptn_posts tptn_posts_widget">
               <ul>
-                <% articles.forEach((d)=> { %>
+                <% published.forEach((d)=> { %>
                 <li>
                   <a href="/blog/single/<%= d.url %>" class="tptn_link">
                     <img

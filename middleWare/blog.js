@@ -8,6 +8,9 @@ module.exports = async (req, res, next) => {
   const allInfo = await Page.getSite();
   const siteInfo = await SystemInformation.getInfo("site");
   const articles = await Article.getFull();
+  const gunluk = [];
+  const published = [];
+  const anpublished = [];
   res.locals.articles = articles.data;
 
   articles.data.forEach((d) => {
@@ -25,7 +28,16 @@ module.exports = async (req, res, next) => {
         shortDate: moment(c.createdDate).format(`DD MMMM, YYYY - HH:mm`),
       };
     });
+
+    if (d.type == 1) gunluk.push(d);
+    else {
+      if (d.published) published.push(d);
+      else anpublished.push(d);
+    }
   });
+  res.locals.published = published;
+  res.locals.gunluk = gunluk;
+  res.locals.anpublished = anpublished;
   const currentInfo = allInfo.data.find(
     (data) => data.slug == (req.url == "/" ? "/blog" : "/blog" + req.url)
   );

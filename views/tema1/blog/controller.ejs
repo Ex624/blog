@@ -1,0 +1,3 @@
+<%if(article.type == 0 && article.published == true){%> <%-
+include("./single.ejs") %> <%}else if(article.type == 1){%>yasaklı bölge <%}else
+if(article.published == false){%> henüz yayınlanmamış. <%}%>

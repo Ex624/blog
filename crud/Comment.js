@@ -86,3 +86,29 @@ module.exports.add = async ({
     });
   });
 };
+module.exports.getAll = async () => {
+  return new Promise(async (resolve, reject) => {
+    const comments = await Comment.find({}).sort({ createdDate: -1 });
+    const articles = await Article.find({});
+    const allData = [];
+    comments.map((c) => {
+      c.createdDateEdit = moment(c.createdDate).format(`DD MMMM, YYYY - HH:mm`);
+      articles.forEach((a) => {
+        if (a.length != 0)
+          a.comments.forEach((ca) => {
+            if (String(c._id) == String(ca))
+              allData.push({ article: a, comment: c });
+          });
+      });
+    });
+
+    resolve(allData);
+  });
+};
+
+module.exports.whereById = async (id) => {
+  return new Promise(async (resolve, reject) => {
+    const data = await Comment.findById(id);
+    resolve(data);
+  });
+};
